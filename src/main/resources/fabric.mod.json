@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "cnpc-cobblemon-addon",
+  "version": "${version}",
+  "name": "CNPC-Cobblemon-Addon",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/cnpc-cobblemon-addon/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "matiastgm.com.br.client.CnpcCobblemonAddonClient"
+    ],
+    "main": [
+      "matiastgm.com.br.CnpcCobblemonAddon"
+    ]
+  },
+  "mixins": [
+    "cnpc-cobblemon-addon.mixins.json",
+    {
+      "config": "cnpc-cobblemon-addon.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-language-kotlin": ">=${kotlin_loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
