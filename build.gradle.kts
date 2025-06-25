@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "2.2.0"
-    id("fabric-loom") version "1.7.1"
+    id("fabric-loom") version "1.10-SNAPSHOT"
     id("maven-publish")
 }
 
@@ -36,11 +36,9 @@ loom {
 
 
 repositories {
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
+    mavenCentral()
+    maven(url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
+    maven("https://maven.impactdev.net/repository/development/")
 }
 
 dependencies {
@@ -51,6 +49,9 @@ dependencies {
     modImplementation("net.fabricmc:fabric-language-kotlin:${project.property("kotlin_loader_version")}")
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
+
+    modImplementation("com.cobblemon:fabric:1.6.1+1.21.1-SNAPSHOT")
+    modImplementation(files("libs/CustomNPCs-1.21.1-GBPort-Unofficial-20250416.jar"))
 }
 
 tasks.processResources {
